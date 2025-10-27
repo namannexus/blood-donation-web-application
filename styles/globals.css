@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small custom styles */
+.container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; }
