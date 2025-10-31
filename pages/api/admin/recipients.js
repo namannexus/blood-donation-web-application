@@ -1,5 +1,5 @@
 import { connectToDatabase } from '../../../lib/mongodb'
-import Donor from '../../../lib/models/Donor'
+import Recipient from '../../../lib/models/Recipient'
 
 export default async function handler(req,res){
   const adminPass = req.headers['x-admin-pass'] || ''
@@ -8,13 +8,13 @@ export default async function handler(req,res){
   try{
     await connectToDatabase()
     if(req.method === 'GET'){
-      const donors = await Donor.find({}).sort({ createdAt:-1 }).lean()
-      return res.status(200).json({ donors })
+      const recipients = await Recipient.find({}).sort({ createdAt:-1 }).lean()
+      return res.status(200).json({ recipients })
     }
     if(req.method === 'POST'){
-      const body = req.body || {}
-      const donor = await Donor.create({ name: body.name, email: body.email, phone: body.phone, bloodType: body.bloodType, city: body.city, unitsAvailable: body.unitsAvailable ?? 1 })
-      return res.status(201).json({ donor })
+      const b = req.body || {}
+      const r = await Recipient.create({ name:b.name, phone:b.phone, email:b.email, requiredBloodType:b.requiredBloodType, unitsNeeded:b.unitsNeeded||1, city:b.city, status:b.status||'open' })
+      return res.status(201).json({ recipient:r })
     }
     return res.status(405).json({ message:'Method not allowed' })
   }catch(e){

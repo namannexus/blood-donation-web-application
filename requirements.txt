@@ -1,0 +1,29 @@
+# Plain dependency list (npm packages with versions) compatible with Next 14 / React 18
+# Original repo dependencies (do not change these in package.json)
+clsx@1.2.1
+framer-motion@10.12.16
+mongodb@^6.20.0
+mongoose@^7.8.7
+next@14.2.33
+nodemailer@^7.0.10
+react@18.2.0
+react-dom@18.2.0
+
+# Dev dependencies from repo
+autoprefixer@10.4.14
+postcss@^8.5.6
+tailwindcss@3.4.13
+
+# Optional animation / frontend helpers (compatible with React 18 & Next 14)
+# Lottie core (used client-side via dynamic import)
+lottie-web@5.11.8
+# Lightweight React player (optional, if you prefer a React wrapper)
+react-lottie-player@3.6.0
+# Small tilt/hover micro interactions (optional)
+vanilla-tilt@1.7.1
+
+# Notes:
+# 1) To install the exact repo packages, run `npm ci` in the repository (it will use package.json).
+# 2) To add the optional animation packages, run:
+#    npm install lottie-web react-lottie-player vanilla-tilt
+# 3) Node: Next 14 works on Node 18+ (Node 18 or Node 20 recommended).
